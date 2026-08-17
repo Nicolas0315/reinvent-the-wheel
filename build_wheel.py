@@ -44,9 +44,7 @@ def main():
     entries.append((f"{DIST_INFO}/METADATA", METADATA.encode()))
     entries.append((f"{DIST_INFO}/WHEEL", WHEEL_META.encode()))
 
-    record_lines = [
-        f"{name},{record_hash(data)},{len(data)}" for name, data in entries
-    ]
+    record_lines = [f"{name},{record_hash(data)},{len(data)}" for name, data in entries]
     record_lines.append(f"{DIST_INFO}/RECORD,,")
     entries.append((f"{DIST_INFO}/RECORD", ("\n".join(record_lines) + "\n").encode()))
 
