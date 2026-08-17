@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  lint-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,5 +19,5 @@ jobs:
       - name: Lint (report only, pre-existing debt not gated)
         run: ruff check .
         continue-on-error: true
-      - name: Syntax smoke check
-        run: python -m compileall -q .
+      - name: Fuzz test (myers_diff, 2008 cases, two independent oracles)
+        run: python test_rewheel.py
